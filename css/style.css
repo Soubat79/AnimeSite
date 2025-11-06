@@ -185,6 +185,11 @@ nav ul li a:hover, nav ul li a.active {
     text-decoration: none;
     font-weight: 600;
     transition: background 0.3s;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
 }
 
 .cta-button:hover {
@@ -246,6 +251,37 @@ nav ul li a:hover, nav ul li a.active {
 .rating {
     color: gold;
     margin-top: 5px;
+}
+
+/* Install Section */
+.install-section {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.install-button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.install-button:hover {
+    background: #0097e6;
+}
+
+.install-button i {
+    margin-right: 8px;
 }
 
 /* Anime Detail Page Styles */
@@ -327,10 +363,19 @@ nav ul li a:hover, nav ul li a.active {
     font-weight: 600;
     cursor: pointer;
     transition: background 0.3s;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
 }
 
 .watch-button:hover {
     background: #ff0a16;
+}
+
+.watch-button i {
+    margin-right: 8px;
 }
 
 /* Episode List */
@@ -375,6 +420,11 @@ nav ul li a:hover, nav ul li a.active {
     border-radius: 4px;
     cursor: pointer;
     transition: background 0.3s;
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .episode-play:hover {
@@ -433,6 +483,11 @@ nav ul li a:hover, nav ul li a.active {
     margin-left: 10px;
     cursor: pointer;
     transition: background 0.3s;
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .playback-controls button:hover {
@@ -501,6 +556,11 @@ footer {
     color: var(--light);
     font-size: 20px;
     transition: color 0.3s;
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .social-links a:hover {
@@ -513,6 +573,37 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--gray);
     font-size: 14px;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 480px) {
+    .anime-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .anime-card img {
+        height: 200px;
+    }
+    
+    .hero h1 {
+        font-size: 24px;
+    }
+    
+    .video-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .playback-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* Prevent zoom on input focus */
+input, select, textarea {
+    font-size: 16px;
 }
 
 /* Responsive Design */
