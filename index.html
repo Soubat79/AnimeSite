@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>AnimeSite</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnimeSite – Watch Anime</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand">AnimeSite</div>
-    <input id="searchInput" class="search" placeholder="Search anime or episode..." />
+  <header>
+    <h1 class="logo">AnimeSite</h1>
   </header>
 
-  <main>
-    <section class="grid" id="animeGrid"></section>
+  <main class="anime-grid">
+    <div class="anime-card" onclick="openAnime('naruto.html')">
+      <img src="images/naruto.jpg" alt="Naruto">
+      <h2>Naruto</h2>
+    </div>
+
+    <div class="anime-card" onclick="openAnime('onepiece.html')">
+      <img src="images/onepiece.jpg" alt="One Piece">
+      <h2>One Piece</h2>
+    </div>
+
+    <div class="anime-card" onclick="openAnime('demon-slayer.html')">
+      <img src="images/demon-slayer.jpg" alt="Demon Slayer">
+      <h2>Demon Slayer</h2>
+    </div>
+
+    <div class="anime-card" onclick="openAnime('attack-on-titan.html')">
+      <img src="images/aot.jpg" alt="Attack on Titan">
+      <h2>Attack on Titan</h2>
+    </div>
   </main>
 
   <script src="script.js"></script>
