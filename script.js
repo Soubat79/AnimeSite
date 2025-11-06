@@ -16,6 +16,7 @@ const searchResults = document.getElementById('searchResults');
 // Sample anime data for search
 const animeData = [
     { title: "Naruto: Shippuden", genre: "Action, Adventure", link: "anime/naruto.html" },
+    { title: "The Angel Next Door Spoils Me Rotten", genre: "Romance, Comedy, Slice of Life", link: "anime/angel-next-door.html" }
     { title: "One Piece", genre: "Action, Adventure, Comedy", link: "anime/onepiece.html" },
     { title: "Demon Slayer: Kimetsu no Yaiba", genre: "Action, Supernatural", link: "anime/demon-slayer.html" },
     { title: "Attack on Titan", genre: "Action, Drama, Fantasy", link: "anime/attack-on-titan.html" },
