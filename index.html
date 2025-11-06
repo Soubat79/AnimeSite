@@ -1,38 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AnimeSite – Watch Anime</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnimeFlix - Stream Your Favorite Anime</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <h1 class="logo">AnimeSite</h1>
-  </header>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-play-circle"></i> AnimeFlix
+                </a>
+                
+                <nav>
+                    <ul>
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="#browse">Browse</a></li>
+                        <li><a href="#mylist">My List</a></li>
+                        <li><a href="#new">New Releases</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search anime...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                    <div class="search-results" id="searchResults"></div>
+                </div>
+                
+                <div class="user-actions">
+                    <a href="#"><i class="fas fa-bell"></i></a>
+                    <a href="#"><i class="fas fa-user"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  <main class="anime-grid">
-    <div class="anime-card" onclick="openAnime('naruto.html')">
-      <img src="images/naruto.jpg" alt="Naruto">
-      <h2>Naruto</h2>
-    </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Stream Your Favorite Anime Anytime, Anywhere</h1>
+                <p>Join thousands of anime fans and enjoy unlimited access to the best anime series and movies in HD quality.</p>
+                <a href="#featured" class="cta-button">Start Watching Now</a>
+            </div>
+        </div>
+    </section>
 
-    <div class="anime-card" onclick="openAnime('onepiece.html')">
-      <img src="images/onepiece.jpg" alt="One Piece">
-      <h2>One Piece</h2>
-    </div>
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Featured Anime -->
+        <h2 class="section-title" id="featured">Featured Anime</h2>
+        <div class="anime-grid">
+            <div class="anime-card" data-anime="naruto">
+                <img src="images/naruto.jpg" alt="Naruto">
+                <div class="anime-info">
+                    <h3>Naruto: Shippuden</h3>
+                    <p>Action, Adventure</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="anime-card" data-anime="onepiece">
+                <img src="images/onepiece.jpg" alt="One Piece">
+                <div class="anime-info">
+                    <h3>One Piece</h3>
+                    <p>Action, Adventure, Comedy</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="anime-card" data-anime="demon-slayer">
+                <img src="images/demon-slayer.jpg" alt="Demon Slayer">
+                <div class="anime-info">
+                    <h3>Demon Slayer: Kimetsu no Yaiba</h3>
+                    <p>Action, Supernatural</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="anime-card" data-anime="attack-on-titan">
+                <img src="images/aot.jpg" alt="Attack on Titan">
+                <div class="anime-info">
+                    <h3>Attack on Titan</h3>
+                    <p>Action, Drama, Fantasy</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <div class="anime-card" onclick="openAnime('demon-slayer.html')">
-      <img src="images/demon-slayer.jpg" alt="Demon Slayer">
-      <h2>Demon Slayer</h2>
-    </div>
+        <!-- Popular Anime -->
+        <h2 class="section-title" id="browse">Popular This Week</h2>
+        <div class="anime-grid">
+            <div class="anime-card" data-anime="jujutsu-kaisen">
+                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Jujutsu Kaisen">
+                <div class="anime-info">
+                    <h3>Jujutsu Kaisen</h3>
+                    <p>Action, Supernatural</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="anime-card" data-anime="tokyo-revengers">
+                <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Tokyo Revengers">
+                <div class="anime-info">
+                    <h3>Tokyo Revengers</h3>
+                    <p>Action, Drama, Supernatural</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="anime-card" data-anime="spy-x-family">
+                <img src="https://images.unsplash.com/photo-1541562232579-512a21360020?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Spy x Family">
+                <div class="anime-info">
+                    <h3>Spy x Family</h3>
+                    <p>Action, Comedy, Slice of Life</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="anime-card" data-anime="chainsaw-man">
+                <img src="https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Chainsaw Man">
+                <div class="anime-info">
+                    <h3>Chainsaw Man</h3>
+                    <p>Action, Horror</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-    <div class="anime-card" onclick="openAnime('attack-on-titan.html')">
-      <img src="images/aot.jpg" alt="Attack on Titan">
-      <h2>Attack on Titan</h2>
-    </div>
-  </main>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#browse">Browse</a></li>
+                        <li><a href="#mylist">My List</a></li>
+                        <li><a href="#new">New Releases</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">DMCA</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 AnimeFlix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
