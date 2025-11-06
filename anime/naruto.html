@@ -1,69 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Naruto — AnimeSite</title>
-<link rel="stylesheet" href="../css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naruto – Episodes</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .episode-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+    .episode {
+      background-color: #1a1a1a;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      text-align: center;
+      transition: 0.2s;
+    }
+    .episode:hover { transform: scale(1.05); }
+    .episode img { width: 100%; height: 100px; object-fit: cover; }
+    .episode span { display: block; padding: 5px; color: #E4007C; }
+  </style>
 </head>
 <body>
-<header class="topbar">
-  <div class="brand">AnimeSite</div>
-  <a href="../index.html" style="color:#bfbfbf;text-decoration:none">← Home</a>
-</header>
+  <header>
+    <h1 class="logo">Naruto Episodes</h1>
+  </header>
 
-<div class="player-wrap">
-  <div class="player">
-    <h2>Naruto</h2>
-    <!-- iframe player -->
-    <iframe id="playerFrame" src="https://short.icu/MIcxKWDU5?ep=1" width="100%" height="420" frameborder="0" allowfullscreen></iframe>
+  <main>
+    <div class="video-container" style="text-align:center; margin:20px;">
+      <iframe id="videoFrame" width="640" height="360"
+        src="https://short.icu/MIcxKWDU5"
+        frameborder="0" allowfullscreen></iframe>
+    </div>
 
-    <div class="ep-list" id="epList"></div>
-  </div>
+    <h2 style="text-align:center;">Episodes 1–13</h2>
 
-  <aside class="sidebar" id="sidebar">
-    <h3>Recommended</h3>
-    <div id="recoContainer"></div>
-  </aside>
-</div>
+    <div class="episode-grid" id="episodes"></div>
+  </main>
 
-<script>
-const episodes = ["https://short.icu/MIcxKWDU5?ep=1","https://short.icu/MIcxKWDU5?ep=2","https://short.icu/MIcxKWDU5?ep=3","https://short.icu/MIcxKWDU5?ep=4","https://short.icu/MIcxKWDU5?ep=5","https://short.icu/MIcxKWDU5?ep=6","https://short.icu/MIcxKWDU5?ep=7","https://short.icu/MIcxKWDU5?ep=8","https://short.icu/MIcxKWDU5?ep=9","https://short.icu/MIcxKWDU5?ep=10","https://short.icu/MIcxKWDU5?ep=11","https://short.icu/MIcxKWDU5?ep=12","https://short.icu/MIcxKWDU5?ep=13","https://short.icu/MIcxKWDU5?ep=14","https://short.icu/MIcxKWDU5?ep=15","https://short.icu/MIcxKWDU5?ep=16","https://short.icu/MIcxKWDU5?ep=17","https://short.icu/MIcxKWDU5?ep=18","https://short.icu/MIcxKWDU5?ep=19","https://short.icu/MIcxKWDU5?ep=20","https://short.icu/MIcxKWDU5?ep=21","https://short.icu/MIcxKWDU5?ep=22","https://short.icu/MIcxKWDU5?ep=23","https://short.icu/MIcxKWDU5?ep=24","https://short.icu/MIcxKWDU5?ep=25","https://short.icu/MIcxKWDU5?ep=26","https://short.icu/MIcxKWDU5?ep=27","https://short.icu/MIcxKWDU5?ep=28","https://short.icu/MIcxKWDU5?ep=29","https://short.icu/MIcxKWDU5?ep=30","https://short.icu/MIcxKWDU5?ep=31","https://short.icu/MIcxKWDU5?ep=32","https://short.icu/MIcxKWDU5?ep=33","https://short.icu/MIcxKWDU5?ep=34","https://short.icu/MIcxKWDU5?ep=35","https://short.icu/MIcxKWDU5?ep=36","https://short.icu/MIcxKWDU5?ep=37","https://short.icu/MIcxKWDU5?ep=38","https://short.icu/MIcxKWDU5?ep=39","https://short.icu/MIcxKWDU5?ep=40","https://short.icu/MIcxKWDU5?ep=41","https://short.icu/MIcxKWDU5?ep=42","https://short.icu/MIcxKWDU5?ep=43","https://short.icu/MIcxKWDU5?ep=44","https://short.icu/MIcxKWDU5?ep=45","https://short.icu/MIcxKWDU5?ep=46","https://short.icu/MIcxKWDU5?ep=47","https://short.icu/MIcxKWDU5?ep=48","https://short.icu/MIcxKWDU5?ep=49","https://short.icu/MIcxKWDU5?ep=50","https://short.icu/MIcxKWDU5?ep=51","https://short.icu/MIcxKWDU5?ep=52","https://short.icu/MIcxKWDU5?ep=53","https://short.icu/MIcxKWDU5?ep=54","https://short.icu/MIcxKWDU5?ep=55","https://short.icu/MIcxKWDU5?ep=56","https://short.icu/MIcxKWDU5?ep=57","https://short.icu/MIcxKWDU5?ep=58","https://short.icu/MIcxKWDU5?ep=59","https://short.icu/MIcxKWDU5?ep=60","https://short.icu/MIcxKWDU5?ep=61","https://short.icu/MIcxKWDU5?ep=62","https://short.icu/MIcxKWDU5?ep=63","https://short.icu/MIcxKWDU5?ep=64","https://short.icu/MIcxKWDU5?ep=65","https://short.icu/MIcxKWDU5?ep=66","https://short.icu/MIcxKWDU5?ep=67","https://short.icu/MIcxKWDU5?ep=68","https://short.icu/MIcxKWDU5?ep=69","https://short.icu/MIcxKWDU5?ep=70","https://short.icu/MIcxKWDU5?ep=71","https://short.icu/MIcxKWDU5?ep=72","https://short.icu/MIcxKWDU5?ep=73","https://short.icu/MIcxKWDU5?ep=74","https://short.icu/MIcxKWDU5?ep=75","https://short.icu/MIcxKWDU5?ep=76","https://short.icu/MIcxKWDU5?ep=77","https://short.icu/MIcxKWDU5?ep=78","https://short.icu/MIcxKWDU5?ep=79","https://short.icu/MIcxKWDU5?ep=80","https://short.icu/MIcxKWDU5?ep=81","https://short.icu/MIcxKWDU5?ep=82","https://short.icu/MIcxKWDU5?ep=83","https://short.icu/MIcxKWDU5?ep=84","https://short.icu/MIcxKWDU5?ep=85","https://short.icu/MIcxKWDU5?ep=86","https://short.icu/MIcxKWDU5?ep=87","https://short.icu/MIcxKWDU5?ep=88","https://short.icu/MIcxKWDU5?ep=89","https://short.icu/MIcxKWDU5?ep=90","https://short.icu/MIcxKWDU5?ep=91","https://short.icu/MIcxKWDU5?ep=92","https://short.icu/MIcxKWDU5?ep=93","https://short.icu/MIcxKWDU5?ep=94","https://short.icu/MIcxKWDU5?ep=95","https://short.icu/MIcxKWDU5?ep=96","https://short.icu/MIcxKWDU5?ep=97","https://short.icu/MIcxKWDU5?ep=98","https://short.icu/MIcxKWDU5?ep=99","https://short.icu/MIcxKWDU5?ep=100"];
+  <script>
+    const episodes = [];
+    for (let i = 1; i <= 13; i++) {
+      episodes.push({
+        ep: i,
+        img: `https://placehold.co/300x170/E4007C/0A0A0A?text=EP+${i}`,
+        link: "https://short.icu/MIcxKWDU5"
+      });
+    }
 
-const player = document.getElementById('playerFrame');
-const epList = document.getElementById('epList');
-
-function loadEpisode(i){
-  player.src = episodes[i];
-  document.querySelectorAll('.ep-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('epbtn-'+i).classList.add('active');
-  player.scrollIntoView({behavior:'smooth', block:'center'});
-}
-
-// build list
-episodes.forEach((link, idx) => {
-  const btn = document.createElement('button');
-  btn.className = 'ep-btn' + (idx===0 ? ' active' : '');
-  btn.id = 'epbtn-' + idx;
-  btn.textContent = 'EP ' + (idx+1);
-  btn.onclick = () => loadEpisode(idx);
-  epList.appendChild(btn);
-});
-
-// recommended
-const reco = document.getElementById('recoContainer');
-const recommendations = [
-  {title:'One Piece', page:'onepiece.html', img:'../images/onepiece.jpg'},
-  {title:'Demon Slayer', page:'demon-slayer.html', img:'../images/demon-slayer.jpg'},
-  {title:'Attack on Titan', page:'attack-on-titan.html', img:'../images/aot.jpg'}
-];
-recommendations.forEach(r=>{
-  const card = document.createElement('div');
-  card.className = 'reco-card';
-  card.innerHTML = `<img src="${r.img}" alt="${r.title}"><div class="video-info"><h4 class="reco-title">${r.title}</h4><p class="reco-sub">Click to open</p></div>`;
-  card.onclick = ()=> location.href = '../anime/' + r.page;
-  reco.appendChild(card);
-});
-</script>
+    const container = document.getElementById("episodes");
+    episodes.forEach(e => {
+      const div = document.createElement("div");
+      div.className = "episode";
+      div.innerHTML = `
+        <img src="${e.img}">
+        <span>Episode ${e.ep}</span>
+      `;
+      div.onclick = () => {
+        document.getElementById("videoFrame").src = e.link;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      };
+      container.appendChild(div);
+    });
+  </script>
 </body>
 </html>
