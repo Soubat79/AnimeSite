@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>One Piece — AnimeSite</title>
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">AnimeSite</div>
+  <a href="../index.html" style="color:#bfbfbf;text-decoration:none">← Home</a>
+</header>
+
+<div class="player-wrap">
+  <div class="player">
+    <h2>One Piece</h2>
+    <!-- iframe player -->
+    <iframe id="playerFrame" src="https://short.icu/gMIDVCgEQ?ep=1" width="100%" height="420" frameborder="0" allowfullscreen></iframe>
+
+    <div class="ep-list" id="epList"></div>
+  </div>
+
+  <aside class="sidebar" id="sidebar">
+    <h3>Recommended</h3>
+    <div id="recoContainer"></div>
+  </aside>
+</div>
+
+<script>
+const episodes = ["https://short.icu/gMIDVCgEQ?ep=1","https://short.icu/gMIDVCgEQ?ep=2","https://short.icu/gMIDVCgEQ?ep=3","https://short.icu/gMIDVCgEQ?ep=4","https://short.icu/gMIDVCgEQ?ep=5","https://short.icu/gMIDVCgEQ?ep=6","https://short.icu/gMIDVCgEQ?ep=7","https://short.icu/gMIDVCgEQ?ep=8","https://short.icu/gMIDVCgEQ?ep=9","https://short.icu/gMIDVCgEQ?ep=10","https://short.icu/gMIDVCgEQ?ep=11","https://short.icu/gMIDVCgEQ?ep=12","https://short.icu/gMIDVCgEQ?ep=13","https://short.icu/gMIDVCgEQ?ep=14","https://short.icu/gMIDVCgEQ?ep=15","https://short.icu/gMIDVCgEQ?ep=16","https://short.icu/gMIDVCgEQ?ep=17","https://short.icu/gMIDVCgEQ?ep=18","https://short.icu/gMIDVCgEQ?ep=19","https://short.icu/gMIDVCgEQ?ep=20","https://short.icu/gMIDVCgEQ?ep=21","https://short.icu/gMIDVCgEQ?ep=22","https://short.icu/gMIDVCgEQ?ep=23","https://short.icu/gMIDVCgEQ?ep=24","https://short.icu/gMIDVCgEQ?ep=25","https://short.icu/gMIDVCgEQ?ep=26","https://short.icu/gMIDVCgEQ?ep=27","https://short.icu/gMIDVCgEQ?ep=28","https://short.icu/gMIDVCgEQ?ep=29","https://short.icu/gMIDVCgEQ?ep=30","https://short.icu/gMIDVCgEQ?ep=31","https://short.icu/gMIDVCgEQ?ep=32","https://short.icu/gMIDVCgEQ?ep=33","https://short.icu/gMIDVCgEQ?ep=34","https://short.icu/gMIDVCgEQ?ep=35","https://short.icu/gMIDVCgEQ?ep=36","https://short.icu/gMIDVCgEQ?ep=37","https://short.icu/gMIDVCgEQ?ep=38","https://short.icu/gMIDVCgEQ?ep=39","https://short.icu/gMIDVCgEQ?ep=40","https://short.icu/gMIDVCgEQ?ep=41","https://short.icu/gMIDVCgEQ?ep=42","https://short.icu/gMIDVCgEQ?ep=43","https://short.icu/gMIDVCgEQ?ep=44","https://short.icu/gMIDVCgEQ?ep=45","https://short.icu/gMIDVCgEQ?ep=46","https://short.icu/gMIDVCgEQ?ep=47","https://short.icu/gMIDVCgEQ?ep=48","https://short.icu/gMIDVCgEQ?ep=49","https://short.icu/gMIDVCgEQ?ep=50","https://short.icu/gMIDVCgEQ?ep=51","https://short.icu/gMIDVCgEQ?ep=52","https://short.icu/gMIDVCgEQ?ep=53","https://short.icu/gMIDVCgEQ?ep=54","https://short.icu/gMIDVCgEQ?ep=55","https://short.icu/gMIDVCgEQ?ep=56","https://short.icu/gMIDVCgEQ?ep=57","https://short.icu/gMIDVCgEQ?ep=58","https://short.icu/gMIDVCgEQ?ep=59","https://short.icu/gMIDVCgEQ?ep=60","https://short.icu/gMIDVCgEQ?ep=61","https://short.icu/gMIDVCgEQ?ep=62","https://short.icu/gMIDVCgEQ?ep=63","https://short.icu/gMIDVCgEQ?ep=64","https://short.icu/gMIDVCgEQ?ep=65","https://short.icu/gMIDVCgEQ?ep=66","https://short.icu/gMIDVCgEQ?ep=67","https://short.icu/gMIDVCgEQ?ep=68","https://short.icu/gMIDVCgEQ?ep=69","https://short.icu/gMIDVCgEQ?ep=70","https://short.icu/gMIDVCgEQ?ep=71","https://short.icu/gMIDVCgEQ?ep=72","https://short.icu/gMIDVCgEQ?ep=73","https://short.icu/gMIDVCgEQ?ep=74","https://short.icu/gMIDVCgEQ?ep=75","https://short.icu/gMIDVCgEQ?ep=76","https://short.icu/gMIDVCgEQ?ep=77","https://short.icu/gMIDVCgEQ?ep=78","https://short.icu/gMIDVCgEQ?ep=79","https://short.icu/gMIDVCgEQ?ep=80","https://short.icu/gMIDVCgEQ?ep=81","https://short.icu/gMIDVCgEQ?ep=82","https://short.icu/gMIDVCgEQ?ep=83","https://short.icu/gMIDVCgEQ?ep=84","https://short.icu/gMIDVCgEQ?ep=85","https://short.icu/gMIDVCgEQ?ep=86","https://short.icu/gMIDVCgEQ?ep=87","https://short.icu/gMIDVCgEQ?ep=88","https://short.icu/gMIDVCgEQ?ep=89","https://short.icu/gMIDVCgEQ?ep=90","https://short.icu/gMIDVCgEQ?ep=91","https://short.icu/gMIDVCgEQ?ep=92","https://short.icu/gMIDVCgEQ?ep=93","https://short.icu/gMIDVCgEQ?ep=94","https://short.icu/gMIDVCgEQ?ep=95","https://short.icu/gMIDVCgEQ?ep=96","https://short.icu/gMIDVCgEQ?ep=97","https://short.icu/gMIDVCgEQ?ep=98","https://short.icu/gMIDVCgEQ?ep=99","https://short.icu/gMIDVCgEQ?ep=100"];
+
+const player = document.getElementById('playerFrame');
+const epList = document.getElementById('epList');
+
+function loadEpisode(i){
+  player.src = episodes[i];
+  document.querySelectorAll('.ep-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('epbtn-'+i).classList.add('active');
+  player.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+// build list
+episodes.forEach((link, idx) => {
+  const btn = document.createElement('button');
+  btn.className = 'ep-btn' + (idx===0 ? ' active' : '');
+  btn.id = 'epbtn-' + idx;
+  btn.textContent = 'EP ' + (idx+1);
+  btn.onclick = () => loadEpisode(idx);
+  epList.appendChild(btn);
+});
+
+// recommended
+const reco = document.getElementById('recoContainer');
+const recommendations = [
+  {title:'One Piece', page:'onepiece.html', img:'../images/onepiece.jpg'},
+  {title:'Demon Slayer', page:'demon-slayer.html', img:'../images/demon-slayer.jpg'},
+  {title:'Attack on Titan', page:'attack-on-titan.html', img:'../images/aot.jpg'}
+];
+recommendations.forEach(r=>{
+  const card = document.createElement('div');
+  card.className = 'reco-card';
+  card.innerHTML = `<img src="${r.img}" alt="${r.title}"><div class="video-info"><h4 class="reco-title">${r.title}</h4><p class="reco-sub">Click to open</p></div>`;
+  card.onclick = ()=> location.href = '../anime/' + r.page;
+  reco.appendChild(card);
+});
+</script>
+</body>
+</html>
