@@ -1,71 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Naruto – Episodes</title>
-  <link rel="stylesheet" href="../css/style.css">
-  <style>
-    .episode-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 15px;
-      padding: 20px;
-    }
-    .episode {
-      background-color: #1a1a1a;
-      border-radius: 8px;
-      overflow: hidden;
-      cursor: pointer;
-      text-align: center;
-      transition: 0.2s;
-    }
-    .episode:hover { transform: scale(1.05); }
-    .episode img { width: 100%; height: 100px; object-fit: cover; }
-    .episode span { display: block; padding: 5px; color: #E4007C; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naruto: Shippuden - AnimeFlix</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <h1 class="logo">Naruto Episodes</h1>
-  </header>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-play-circle"></i> AnimeFlix
+                </a>
+                
+                <nav>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../index.html#browse">Browse</a></li>
+                        <li><a href="../index.html#mylist">My List</a></li>
+                        <li><a href="../index.html#new">New Releases</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search anime...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                    <div class="search-results" id="searchResults"></div>
+                </div>
+                
+                <div class="user-actions">
+                    <a href="#"><i class="fas fa-bell"></i></a>
+                    <a href="#"><i class="fas fa-user"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  <main>
-    <div class="video-container" style="text-align:center; margin:20px;">
-      <iframe id="videoFrame" width="640" height="360"
-        src="https://short.icu/MIcxKWDU5"
-        frameborder="0" allowfullscreen></iframe>
-    </div>
+    <!-- Anime Detail -->
+    <main class="container anime-detail">
+        <div class="anime-header">
+            <div class="anime-poster">
+                <img src="../images/naruto.jpg" alt="Naruto: Shippuden">
+            </div>
+            <div class="anime-meta">
+                <h1 class="anime-title">Naruto: Shippuden</h1>
+                <div class="anime-genres">
+                    <span class="genre-tag">Action</span>
+                    <span class="genre-tag">Adventure</span>
+                    <span class="genre-tag">Fantasy</span>
+                </div>
+                <div class="anime-synopsis">
+                    <p>Naruto Uzumaki returns to his village after two and a half years of training, ready to face new threats and continue his quest to become Hokage. With the Akatsuki organization looming and his friend Sasuke's path taking a dark turn, Naruto must grow stronger to protect everyone he cares about.</p>
+                </div>
+                <div class="anime-stats">
+                    <div class="stat">
+                        <span class="stat-value">4.7/5</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">500</span>
+                        <span class="stat-label">Episodes</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">2007</span>
+                        <span class="stat-label">Year</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">TV</span>
+                        <span class="stat-label">Type</span>
+                    </div>
+                </div>
+                <button class="watch-button" onclick="playEpisode(1, 'Episode 1: Homecoming', 'Naruto returns to Konoha after two and a half years of training with Jiraiya. He reunites with his friends, but they soon face a new threat from the Akatsuki organization.')">
+                    <i class="fas fa-play"></i> Watch Now
+                </button>
+            </div>
+        </div>
 
-    <h2 style="text-align:center;">Episodes 1–13</h2>
+        <!-- Video Player -->
+        <section class="video-player-section">
+            <h2 class="section-title">Now Playing</h2>
+            <div class="video-container" id="videoContainer">
+                <!-- Video player will be loaded here by JavaScript -->
+            </div>
+            <div class="video-controls">
+                <div class="quality-selector">
+                    <label for="quality">Quality: </label>
+                    <select id="quality">
+                        <option value="auto">Auto</option>
+                        <option value="1080p">1080p</option>
+                        <option value="720p">720p</option>
+                        <option value="480p">480p</option>
+                    </select>
+                </div>
+                <div class="playback-controls">
+                    <button id="prevEpisode">Previous</button>
+                    <button id="nextEpisode">Next</button>
+                </div>
+            </div>
+            <div class="video-info">
+                <h3 class="video-title" id="videoTitle">Episode 1: Homecoming</h3>
+                <p class="video-description" id="videoDescription">Naruto returns to Konoha after two and a half years of training with Jiraiya. He reunites with his friends, but they soon face a new threat from the Akatsuki organization.</p>
+            </div>
+        </section>
 
-    <div class="episode-grid" id="episodes"></div>
-  </main>
+        <!-- Episode List -->
+        <section class="episodes-section">
+            <h2 class="section-title">Episodes</h2>
+            <div class="episode-list">
+                <div class="episode-item" data-episode="1" data-video-url="https://short.icu/MIcxKWDU5">
+                    <div class="episode-info">
+                        <h4>Episode 1: Homecoming</h4>
+                        <p>Naruto returns to Konoha after training with Jiraiya.</p>
+                    </div>
+                    <button class="episode-play">Play</button>
+                </div>
+                <div class="episode-item" data-episode="2" data-video-url="https://short.icu/MIcxKWDU5">
+                    <div class="episode-info">
+                        <h4>Episode 2: The Akatsuki Makes Its Move</h4>
+                        <p>The Akatsuki organization begins their plan to capture the tailed beasts.</p>
+                    </div>
+                    <button class="episode-play">Play</button>
+                </div>
+                <div class="episode-item" data-episode="3" data-video-url="https://short.icu/MIcxKWDU5">
+                    <div class="episode-info">
+                        <h4>Episode 3: The Results of Training</h4>
+                        <p>Naruto demonstrates his new abilities to Kakashi.</p>
+                    </div>
+                    <button class="episode-play">Play</button>
+                </div>
+                <div class="episode-item" data-episode="4" data-video-url="https://short.icu/MIcxKWDU5">
+                    <div class="episode-info">
+                        <h4>Episode 4: The Jinchuriki of the Sand</h4>
+                        <p>Gaara, now the Kazekage, faces a threat from the Akatsuki.</p>
+                    </div>
+                    <button class="episode-play">Play</button>
+                </div>
+                <div class="episode-item" data-episode="5" data-video-url="https://short.icu/MIcxKWDU5">
+                    <div class="episode-info">
+                        <h4>Episode 5: The Kazekage Stands Tall</h4>
+                        <p>Gaara battles Deidara to protect his village.</p>
+                    </div>
+                    <button class="episode-play">Play</button>
+                </div>
+            </div>
+        </section>
+    </main>
 
-  <script>
-    const episodes = [];
-    for (let i = 1; i <= 13; i++) {
-      episodes.push({
-        ep: i,
-        img: `https://placehold.co/300x170/E4007C/0A0A0A?text=EP+${i}`,
-        link: "https://short.icu/MIcxKWDU5"
-      });
-    }
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../index.html#browse">Browse</a></li>
+                        <li><a href="../index.html#mylist">My List</a></li>
+                        <li><a href="../index.html#new">New Releases</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">DMCA</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 AnimeFlix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-    const container = document.getElementById("episodes");
-    episodes.forEach(e => {
-      const div = document.createElement("div");
-      div.className = "episode";
-      div.innerHTML = `
-        <img src="${e.img}">
-        <span>Episode ${e.ep}</span>
-      `;
-      div.onclick = () => {
-        document.getElementById("videoFrame").src = e.link;
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      };
-      container.appendChild(div);
-    });
-  </script>
+    <script src="../script.js"></script>
 </body>
 </html>
