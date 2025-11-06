@@ -163,4 +163,63 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Next episode functionality would go here');
         });
     }
+    
+    // PWA Installation
+    initializePWA();
+});
+
+// PWA Installation functionality
+let deferredPrompt;
+const installButton = document.getElementById('installButton');
+
+function initializePWA() {
+    // Register Service Worker
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/sw.js')
+                .then(function(registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                })
+                .catch(function(err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+        });
+    }
+
+    // Add to Home Screen prompt
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        
+        // Show install button
+        if (installButton) {
+            installButton.style.display = 'flex';
+        }
+        
+        installButton.addEventListener('click', installApp);
+    });
+}
+
+function installApp() {
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the install prompt');
+                installButton.style.display = 'none';
+            } else {
+                console.log('User dismissed the install prompt');
+            }
+            deferredPrompt = null;
+        });
+    }
+}
+
+// Check if app is already installed
+window.addEventListener('appinstalled', (evt) => {
+    console.log('AnimeFlix app was installed.');
+    if (installButton) {
+        installButton.style.display = 'none';
+    }
 });
